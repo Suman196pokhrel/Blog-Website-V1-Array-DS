@@ -1,0 +1,62 @@
+<%- include("partials/header") %>
+
+<div class="container">
+
+      <!-- COntents -->
+      <div class="contentBox">
+
+               <div class="homeCard">
+                    <div class="titleandBtns">
+                         <div class="title">
+                              <i class="fa fa-home fa-2x" aria-hidden="true" style="margin: 5px;"></i>
+                              <h2>Home</h2>
+                         </div>
+                         <div class="btns">
+                              <button class="edit ">Edit</button>
+                              <button class="delete ">Delete</button>
+                         </div>
+          
+                    </div>
+                    <div class="homeContent">
+                         <%= homeContent %>
+                    </div>
+               </div>
+
+               <!-- POSTS -->
+          <div class="postsCards">
+               
+               <% posts.forEach(function(post){  %>
+
+                    <div class="posts" data-tilt>
+                         <div class="postTitle">
+                              <i class="fa fa-calendar-check fa-2x" aria-hidden="true" style="margin-right: 10px;margin-bottom: 10px;"></i>                              
+                              <p> <a href="/post/view/<%=post.id %>"> <%= post.title %> </a> </p>
+                         </div>
+                         <div class="postContent">
+                              <%= post.content.substring(0,200)+ "..." %> 
+                         </div>
+                         <div class="btns1">
+                              <button class="edit1 ">Edit</button>
+                              <button class="delete1 ">Delete</button>
+                         </div>
+                    </div>
+
+               
+                    
+                    
+               <%  }) %>
+
+          
+
+     
+
+     </div>
+
+
+
+</div>
+
+
+</div>
+
+<%- include("partials/footer") %>
