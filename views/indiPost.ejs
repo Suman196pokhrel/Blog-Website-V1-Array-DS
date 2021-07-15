@@ -12,8 +12,17 @@
                          <h2><%= post.title %></h2>
                     </div>
                     <div class="btns">
-                         <button class="edit">Edit</button>
-                         <button class="delete">Delete</button>
+                         <a  href="/post/edit/<%= post.id %>" class="edit1" data="no" > 
+                              <i class="far fa-edit fa-2x" aria-hidden="true" ></i>
+                              
+                    </a>
+                    <form action="/post/delete/<%= post.id %>" method="post">
+                         <button type="submit" class="delete1">
+                              <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                              
+                         </button>
+                    
+                    </form>
                     </div>
                     
      

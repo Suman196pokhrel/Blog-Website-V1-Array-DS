@@ -36,8 +36,8 @@
                               <%= post.content.substring(0,200)+ "..." %> 
                          </div>
                          <div class="btns1">
-                              <button class="edit1 ">Edit</button>
-                              <button class="delete1 ">Delete</button>
+                              <a href="/post/edit/<%= post.id %>" class="edit1 ">Edit</a>
+                              <a href="/post/delete/<%= post.id %>" class="delete1 ">Delete</a>
                          </div>
                     </div>
 

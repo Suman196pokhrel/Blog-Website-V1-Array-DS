@@ -1,0 +1,42 @@
+<%- include("partials/header") %>
+
+
+
+      <!-- COntents -->
+      <div class="contentBox">     
+
+          <div class="popup">
+               <div class="popupTitle">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    Delete Post
+               </div>
+               <div class="popupText">
+                    Are you sure you want to Delete the Post ?
+               </div>
+               <div class="popupBtns">
+                    
+             
+                         <a  href="/" class="delete" data="no" > 
+                                   <i class="fa fa-times " aria-hidden="true"></i>
+                                   No
+                         </a>
+                         <form action="/post/delete/<%= post.id %>" method="post">
+                              <button type="submit" class="edit">
+                                   <i class="fa fa-check " aria-hidden="true"></i>
+                                   Yes
+                              </button>
+                         
+                         </form>
+                              
+                         
+                  
+                    
+               </div>
+          </div>
+
+
+</div>
+
+
+
+<%- include("partials/footer") %>

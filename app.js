@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const math = require('mathjs');
 const ejs = require("ejs");
 const nodemon = require('nodemon');
 const app = express();
@@ -20,7 +21,7 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 
 var posts = [];
-var id = 0;
+
 
 app.get("/",(req,res)=>{
      res.render('home',{homeContent :homeStartingContent,posts:posts})
@@ -28,11 +29,11 @@ app.get("/",(req,res)=>{
 
 
 app.post("/",function(req,res){
+     
      var title = req.body.postTitle;
      var content = req.body.postBody;
-     id = id+1;
      let post = {
-          id: id,
+          id: (math.random(1,99999)).toFixed(2),
           title: title,
           content: content
 
@@ -54,23 +55,90 @@ app.get("/contact",function(req,res){
      res.render('contact',{contactContent :contactContent})
 })
 
-
-app.get("/addpost",function(req,res){
-     res.render('createPost');
-})
-
-
 app.get("/post/view/:postId",function(req,res){
-     console.log("Inside Post Route");
      let tempPost = NaN;
      posts.forEach((post)=>{
           if(post.id == req.params.postId){
-               console.log("The PostID is :> " + req.params.postId + 'And post.id is :> '+ post.id);
                tempPost = post;
           }
      })
+     console.log("Post ID Your Have Selected : " + tempPost.id);
      res.render('indiPost',{post:tempPost});
 })
+
+
+app.get("/post/add",function(req,res){
+     res.render('createPost');
+})
+
+app.get("/post/delete/:postId",function(req,res){
+     let tempPost2 = NaN;
+     posts.forEach((post)=>{
+          if(post.id == req.params.postId){
+               tempPost2 = post;
+          }
+     })
+
+     console.log("Post ID Your Have Selected : " + tempPost2.id);
+
+     res.render('deletePost',{post:tempPost2});
+})
+
+app.post("/post/delete/:postId",function(req,res){
+     console.log("Post ID Your Have Selected for final deletion : " + req.params.postId);
+     let index = NaN;
+     // let index = Number(req.params.postId);
+     
+     // posts.splice(index, 1);
+     // id -= 1;
+     // console.log(posts)
+     posts.forEach((post)=>{
+          if(post.id == req.params.postId){
+                index = posts.indexOf(post);
+               console.log("Your objects Indes is :> "+ index);
+               
+          }
+     })
+     posts.splice(index, 1);
+
+     res.redirect('/');
+})
+
+
+app.get("/post/edit/:postId",function(req,res){
+     let tempPost3 = NaN;
+     posts.forEach((post)=>{
+          if(post.id == req.params.postId){
+               tempPost3 = post;
+          }
+     })
+
+     console.log("Post ID Your Have Selected : " + tempPost3.id);
+
+     res.render('editPost',{post:tempPost3});
+     
+})
+     
+
+app.post("/post/edit/:postId",function(req,res){
+     let editedTitle = req.body.editTitle;
+     let editedBody = req.body.editBody;
+
+     console.log("Edited Title is : "+ editedTitle);
+     posts.forEach((post)=>{
+          if(post.id == req.params.postId){
+              post.title = editedTitle;
+              post.content = editedBody;
+               
+          }
+     })
+
+
+     res.redirect('/');
+     
+})
+     
+
 
 
 

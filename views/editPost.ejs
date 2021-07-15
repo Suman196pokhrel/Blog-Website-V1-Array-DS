@@ -1,0 +1,67 @@
+<%- include("partials/header") %>
+
+
+
+      <!-- COntents -->
+      <div class="contentBox">     
+
+          <div class="popup" style="width: 80vw;height: 60vh;">
+               <div class="popupTitle" style="height: 10%;">
+                    <i class="far fa-edit fa-2x" aria-hidden="true" ></i>
+                    Edit Post
+               </div>
+               
+               <div class="editForm" >
+                   
+                    <form action="/post/edit/<%= post.id %>" method="post">
+                         <div class="mb-3 form-group">
+                              <label for="title">Title of post</label>
+                              <input value="<%= post.title %>" type="text" name="editTitle" id="title" placeholder="title" class="inp" style="width: 100%;">
+                         </div>
+                    
+                         <div class="mb-3 form-group">
+                              <label for="post">Contents of post</label>
+                              <textarea name="editBody"  placeholder="your post" id="post" cols="35" rows="15" class="form-control" style="width: 100%;">"<%= post.content %>" </textarea>
+                         </div>
+
+                         <div class="btns">
+                              <button type="submit" class="edit1" style="justify-content: center;gap: 10%;font-size: 20px;">
+                                   <i class="far fa-edit fa-x" aria-hidden="true" ></i>
+                                   Submit
+                              </button>  
+     
+                              <a  href="/" class="delete1" data="no" style="display: flex;align-items: center;gap: 15px;font-size: 18px;"> 
+                                   <i class="fa fa-times fa-x" aria-hidden="true" ></i>
+                                   Cancel
+                                   
+                              </a>
+                         </div>
+                         
+                    
+                    </form>
+                    
+                    
+                    
+                    
+                    
+                    <!-- <a  href="/" class="delete1" data="no" style="display: flex;align-items: center;gap: 15px;"> 
+                         <i class="fa fa-times fa-2x" aria-hidden="true" ></i>
+                         Cancel
+                         
+                    </a>
+              
+                    <button type="submit" class="edit1" style="justify-content: center;gap: 10%;font-size: 20px;">
+                              <i class="far fa-edit fa-2x" aria-hidden="true" ></i>
+                              Edit
+                    </button> -->
+               
+               
+               </div>
+          </div>
+
+
+</div>
+
+
+
+<%- include("partials/footer") %>
