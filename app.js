@@ -133,14 +133,10 @@ app.post("/post/edit/:postId",function(req,res){
           }
      })
 
-
      res.redirect('/');
      
 })
      
-
-
-
 
 
 
